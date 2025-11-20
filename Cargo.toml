@@ -56,7 +56,8 @@ name = "benches"
 harness = false
 
 [[example]]
-name = "demo"required-features = ["stats", "debug"]
+name = "demo"
+required-features = ["stats", "debug"]
 
 [[example]]
 name = "isometric"

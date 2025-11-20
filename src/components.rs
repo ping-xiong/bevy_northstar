@@ -9,7 +9,10 @@ use bevy::{
 };
 use bevy::{ecs::entity::Entity, math::UVec3, prelude::Component, reflect::Reflect};
 
-use crate::{debug::DebugTilemapType, nav_mask::NavMask, NavRegion, SearchLimits};
+use crate::{nav_mask::NavMask, NavRegion, SearchLimits};
+
+#[cfg(feature = "debug")]
+use crate::{debug::DebugTilemapType};
 
 /// An entities position on the pathfinding [`crate::grid::Grid`].
 /// You'll need to maintain this position if you use the plugin pathfinding systems.
@@ -43,7 +46,7 @@ pub enum PathfindMode {
 
 /// Insert [`Pathfind`] on an entity to pathfind to a goal.
 /// Once the plugin systems have found a path, [`NextPos`] will be inserted.
-#[derive(Component, Default, Debug, Reflect)]
+#[derive(Component, Default, Debug, Reflect, Clone)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Pathfind {
     /// The goal to pathfind to.
