@@ -9,6 +9,7 @@ use crate::{pathfind::PathfindArgs, prelude::*, WithoutPathingFailures};
 
 /// Sets default settings for the Pathfind component.
 #[derive(Default, Debug, Copy, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct PathfindSettings {
     /// Sets the default pathfinding mode.
     /// Defaults to PathfindMode::Refined

@@ -352,6 +352,7 @@ impl Default for GridInternalSettings {
 // Requiring it just surpresses the Bevy warning if the user doesn't add the grid
 // as a child to anything.
 #[require(Transform)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Grid<N: Neighborhood> {
     pub(crate) neighborhood: N,
 

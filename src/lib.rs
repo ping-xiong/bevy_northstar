@@ -96,6 +96,7 @@ impl<Id: Eq> Eq for SmallestCostHolder<Id> {}
 
 /// Sets the limits for the pathfinding request.
 #[derive(Clone, Copy, Debug, Default, Reflect)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct SearchLimits {
     /// Limit the search to a specific region
     pub boundary: Option<NavRegion>,
@@ -107,6 +108,7 @@ pub struct SearchLimits {
 
 /// A Region3d with an iter method to iterate over all positions in the region.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Reflect)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct NavRegion {
     /// The minimum position of the region.
     pub min: UVec3,

@@ -18,7 +18,7 @@ exclude = ["assets/*", "res/*"]
 default = ["parallel"]
 stats = []
 parallel = ["rayon", "ndarray/rayon"]
-serde = ["dep:serde", "bevy/serialize"]
+serde = ["dep:serde", "bevy/serialize", "ndarray/serde", "slab/serde"]
 debug = ["bevy/bevy_gizmos", "bevy/bevy_render"]
 
 [dependencies]

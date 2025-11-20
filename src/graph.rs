@@ -4,6 +4,7 @@ use bevy::{log, math::UVec3, platform::collections::HashMap};
 use crate::{chunk::Chunk, dir::Dir, node::Node, path::Path, NodeId};
 
 /// A graph structure that holds nodes and their connections (edges).
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub(crate) struct Graph {
     /// `Node` storage.
     nodes: slab::Slab<Node>,
