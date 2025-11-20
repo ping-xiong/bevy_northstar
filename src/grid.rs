@@ -33,6 +33,7 @@ use crate::{
 
 /// Settings for how the grid is divided into chunks.
 #[derive(Copy, Clone, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct ChunkSettings {
     /// The square size of each chunk in the grid.
     /// Needs to be at least 3.
@@ -58,6 +59,7 @@ impl Default for ChunkSettings {
 /// Defaults movement cost and passability for initializing the grid cells.
 /// Useful if you're generating your a large map to reduce your initialization time.
 #[derive(Copy, Clone, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct NavSettings {
     /// The default cost for each cell in the grid.
     pub default_movement_cost: MovementCost,
@@ -76,6 +78,7 @@ impl Default for NavSettings {
 
 /// Settings for collision
 #[derive(Copy, Clone, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct CollisionSettings {
     /// If true, collision avoidance is enabled.
     pub enabled: bool,
@@ -442,12 +445,12 @@ impl<N: Neighborhood + Default> Grid<N> {
     }
 
     /// Returns an [`ndarray::ArrayView3<NavCell>`] for read-only access to the grid data.
-    pub fn view(&self) -> ArrayView3<'_, NavCell> {
+    pub fn view(&'_ self) -> ArrayView3<'_, NavCell> {
         self.grid.view()
     }
 
     /// Returns an [`ndarray::ArrayView3<NavCell>`] for read-only access to the data within a given [`Chunk`].
-    pub(crate) fn chunk_view(&self, chunk: &Chunk) -> ArrayView3<'_, NavCell> {
+    pub(crate) fn chunk_view(&'_ self, chunk: &Chunk) -> ArrayView3<'_, NavCell> {
         chunk.view(&self.grid)
     }
 

@@ -14,6 +14,7 @@ use crate::{
 
 /// Required to calculate how to draw the debug gizmos
 #[derive(Reflect, Debug, Clone, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum DebugTilemapType {
     #[default]
     /// Square tilemap, where each tile is a square.

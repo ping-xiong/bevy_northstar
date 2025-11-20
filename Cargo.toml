@@ -18,6 +18,8 @@ exclude = ["assets/*", "res/*"]
 default = ["parallel"]
 stats = []
 parallel = ["rayon", "ndarray/rayon"]
+serde = ["dep:serde", "bevy/serialize"]
+debug = ["bevy/bevy_gizmos", "bevy/bevy_render"]
 
 [dependencies]
 indexmap = "2.11.4"
@@ -29,6 +31,7 @@ smallvec = "1.15.1"
 bevy_voxel_world = { version = "0.12.0", optional = true }
 bevy_panorbit_camera = { version = "0.28.0", optional = true }
 ndshape = { version = "0.3.0", optional = true }
+serde = { version = "1", features = ["derive"], optional = true }
 
 [dependencies.bevy]
 version = "0.17"
@@ -53,15 +56,15 @@ name = "benches"
 harness = false
 
 [[example]]
-name = "demo"
-required-features = ["stats"]
+name = "demo"required-features = ["stats", "debug"]
 
 [[example]]
 name = "isometric"
+required-features = ["debug"]
 
 [[example]]
 name = "collision_testing"
-required-features = ["stats"]
+required-features = ["stats", "debug"]
 
 [[example]]
 name = "basic"
