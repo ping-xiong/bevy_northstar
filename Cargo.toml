@@ -69,12 +69,14 @@ required-features = ["stats", "debug"]
 
 [[example]]
 name = "basic"
+required-features = ["stats", "debug"]
 
 [[example]]
 name = "nav_mask"
 
 [[example]]
 name = "freeform_movement"
+required-features = ["stats", "debug"]
 
 #[[example]]
 #name = "3d_voxel_world"
