@@ -108,7 +108,9 @@ pub trait Neighborhood: Clone + Default + Sync + Send {
 
 /// Use `CardinalNeighborhood` for standard 2D pathfinding with no diagonal movement.
 #[derive(Clone, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct CardinalNeighborhood {
+    #[cfg_attr(feature = "serde", serde(skip, default))]
     pub(crate) filters: Vec<Arc<dyn NeighborFilter + Send + Sync + 'static>>,
 }
 
@@ -151,7 +153,9 @@ impl Neighborhood for CardinalNeighborhood {
 /// Use `CardinalNeighborhood3d` for 3D pathfinding with no diagonal movement.
 /// This neighborhood allows movement in the cardinal directions in 3D space only in UP or DOWN directions.
 #[derive(Clone, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct CardinalNeighborhood3d {
+    #[cfg_attr(feature = "serde", serde(skip, default))]
     pub(crate) filters: Vec<Arc<dyn NeighborFilter + Send + Sync + 'static>>,
 }
 
@@ -200,7 +204,9 @@ impl Neighborhood for CardinalNeighborhood3d {
 /// Use `OrdinalNeighborhood` for 2D pathfinding with diagonal movement.
 /// This neighborhood allows movement in all 8 directions.
 #[derive(Clone, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct OrdinalNeighborhood {
+    #[cfg_attr(feature = "serde", serde(skip, default))]
     pub(crate) filters: Vec<Arc<dyn NeighborFilter + Send + Sync + 'static>>,
 }
 
@@ -269,7 +275,9 @@ impl Neighborhood for OrdinalNeighborhood {
 /// This neighborhood allows movement in all 26 directions.
 /// It's the 3D version of `OrdinalNeighborhood`.
 #[derive(Clone, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct OrdinalNeighborhood3d {
+    #[cfg_attr(feature = "serde", serde(skip, default))]
     pub(crate) filters: Vec<Arc<dyn NeighborFilter + Send + Sync + 'static>>,
 }
 
